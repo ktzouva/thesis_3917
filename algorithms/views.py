@@ -7,4 +7,4 @@ def algorithms_home(request):
 
 def algorithms_detail(request, slug):
     algorithm = Algorithm.objects.get(slug=slug) #Look for this algorithm in the DB and store it
-    return render(request, 'algorithms/algorithms_detail.html', {'algorithm':algorithm})
+    return render(request, 'algorithms/algorithms_detail.html', {'algorithm': algorithm})

@@ -1,4 +1,4 @@
-{% load static from staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -16,7 +16,7 @@
             <li><a href="{% url 'downloads:downloads_home' %}">Downloads</a></li>
             <li><a href="{% url 'algorithms:algorithms_home' %}">Algorithms</a></li>
             <li><a href="{% url 'implementation:implementation_home' %}">Implementation</a></li>
-            <li><a href="{% url 'implementation:saved_values' %}">Saved Values</a></li>
+            <li><a href="{% url 'savedValues:savedValues_home' %}">Saved Values</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
         </ul>
       </nav>

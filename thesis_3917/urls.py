@@ -7,6 +7,7 @@ urlpatterns = [
     path('downloads/', include('downloads.urls')),
     path('algorithms/', include('algorithms.urls')),
     path('implementation/', include('implementation.urls')),
+    path('saved_values/', include('savedValues.urls')),
     path('admin/', admin.site.urls),
     path('', views.homepage, name='home'),
     path('about/', views.about, name='about'),

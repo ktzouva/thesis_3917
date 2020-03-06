@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'downloads',
     'algorithms',
     'implementation',
+    'savedValues',
 ]
 
 MIDDLEWARE = [
