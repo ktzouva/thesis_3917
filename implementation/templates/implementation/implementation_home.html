@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+<div class="container">
+  <h1>Implement An Algorithm</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+      <button type="submit" action="implementation/implementation_home.html">Submit</button>
+    </form> <br>
+
+    <h2>Addition: {{ addition }}</h2>
+    <h2>Subtraction: {{ subtraction }}</h2>
+    <h2>Multiplication: {{ multiplication }}</h2>
+    <h2>Division: {{ division }}</h2>
+
+    <!-- <form method="get" action="implementation/saved_values.html">
+      <button type="submit">Saved Values</button>
+    </form> -->
+    <!-- <a href="{% url 'implementation:saved_values' %}">Saved Values</a> -->
+</div>
+{% endblock %}

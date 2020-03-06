@@ -1,0 +1,13 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+  <div id="algorithm_detail" class="algorithm-detail">
+    <h2>{{ algorithm.title }}</h2>
+
+    <div id="algorithm_detail_algorithm" class="algorithm">
+      <p>{{ algorithm.info|safe }}</p>
+    </div>
+    
+  </div>
+
+{% endblock %}

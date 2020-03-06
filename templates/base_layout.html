@@ -1,0 +1,34 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Implement-ator</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}"
+  </head>
+
+  <body>
+    <header class="wrapper">
+      <h1><a href="{% url 'home' %}">Implement-ator</a></h1>
+      <nav>
+        <ul>
+            <li><a href="{% url 'downloads:downloads_home' %}">Downloads</a></li>
+            <li><a href="{% url 'algorithms:algorithms_home' %}">Algorithms</a></li>
+            <li><a href="{% url 'implementation:implementation_home' %}">Implementation</a></li>
+            <li><a href="{% url 'implementation:saved_values' %}">Saved Values</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="wrapper">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <footer>
+      <p>Konstantinos Tzouvaras, AEM: 3917 <br> Thesis Project, 2019-2020</p>
+    </footer>
+  </body>
+</html>
