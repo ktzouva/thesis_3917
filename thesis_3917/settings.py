@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'algorithms',
     'implementation',
     'savedValues',
+    'accounts',
+    'thesis_3917',
 ]
 
 MIDDLEWARE = [

@@ -17,6 +17,15 @@
             <li><a href="{% url 'algorithms:algorithms_home' %}">Algorithms</a></li>
             <li><a href="{% url 'implementation:implementation_home' %}">Implementation</a></li>
             <li><a href="{% url 'savedValues:savedValues_home' %}">Saved Values</a></li>
+            <li><a href="{% url 'accounts:accounts_home' %}">Account</a></li>
+
+            <li>
+              <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" name="logout">Log Out</button>
+              </form>
+            </li>
+
             <li><a href="{% url 'about' %}">About</a></li>
         </ul>
       </nav>
