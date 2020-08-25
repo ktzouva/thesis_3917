@@ -45,4 +45,4 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
 
-        return redirect('implementation:implementation_home')
+    return render(request, 'accounts/accounts_home.html')
