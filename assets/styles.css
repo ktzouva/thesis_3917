@@ -143,3 +143,35 @@ div.algorithms p{
     font-size: 1.4em;
     margin-bottom: auto;
 }
+
+#accounts p{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
+    font-size: 1.5em;
+}
+
+#signupid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 7px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
+
+#loginid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 7px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
+#implementationid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 7px;
+    margin-right: 300px;
+    margin-left: 300px;
+}

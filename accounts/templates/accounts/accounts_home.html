@@ -3,20 +3,12 @@
 
   <h1>Sign Up or Log In</h1>
 
-  <div class="accounts">
+  <div id="accounts" class="accounts">
 
     {% csrf_token %}
-    <h2><a href="{% url 'accounts:signup' %}">Sign Up</a></h2>
-    <h2><a href="{% url 'accounts:login' %}">Log In</a></h2>
-
-    <div id="logout" class="logout">
-
-      <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" name="logout">Log Out</button>
-      </form>
-
-    </div>
+    <p><a href="{% url 'accounts:signup' %}">Sign Up</a>
+    <a href="{% url 'accounts:login' %}">Log In</a>
+    <a href="{% url 'accounts:logout' %}">Log Out</a></p>
 
   </div>
 
