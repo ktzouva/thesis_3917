@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .forms import ImplementationForm
 from .models import Nums
+import os.path
 #from django.contrib.auth.decorators import login_required
 
 class ImplementationView(TemplateView):
@@ -33,6 +34,8 @@ class ImplementationView(TemplateView):
             numString += sNum2
 
             userID = request.user.username
+            if userID == '':
+                userID = 'null'
 
             addition = num1 + num2
             subtraction = num1 - num2
@@ -52,6 +55,17 @@ class ImplementationView(TemplateView):
             resString += sMultiplication
             resString += ','
             resString += sDivision
+
+            isfile = os.path.isfile('./dataset1.csv')
+
+            if isfile == False:
+                f = open("dataset1.csv", "w+")
+                f.write("%s,%s,%s,%s,%s \r" % (sAddition, sSubtraction, sMultiplication, sDivision, userID))
+                f.close()
+            elif isfile == True:
+                f = open("dataset1.csv", "a")
+                f.write("%s,%s,%s,%s,%s \r" % (sAddition, sSubtraction, sMultiplication, sDivision, userID))
+                f.close()
 
             p = Nums(num1 = num1, num2 = num2, addition = addition, subtraction = subtraction, multiplication = multiplication, division = division, userID = userID, numString = numString, resString = resString)
             p.save()
