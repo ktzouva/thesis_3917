@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'savedValues',
     'accounts',
     'thesis_3917',
+    'datamng',
 ]
 
 MIDDLEWARE = [

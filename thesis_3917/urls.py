@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.homepage, name='home'),
     path('about/', views.about, name='about'),
     path('accounts/', include('accounts.urls')),
+    path('datamng/', include('datamng.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+  <h1>Data Management</h1>
+
+  <div class="container">
+
+    <form  action="{% url 'datamng:runalg' %}" method="post">
+      {%csrf_token%}
+      <button type="submit">Run</button>
+    </form>
+
+  </div>
+
+{% endblock %}
