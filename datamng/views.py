@@ -5,13 +5,16 @@ def datamng_home(request):
     return render(request, 'datamng/datamng_home.html')
 
 def runalg(request):
+    checkinitial = os.path.isfile('./datasets/initial_dataset.csv')
+    checknan = os.path.isfile('./datasets/NaN_dataset.csv')
 
-    isfile = os.path.isfile('./dataset1.csv')
+    if checknan == False:
+        nands = open("./datasets/NaN_dataset.csv", "w")
+        nands.close()
 
-    if isfile == True:
-
-        f = open("dataset1.csv", "r")
-        Lines = f.readlines() #read all lines at once and put it in a list
+    if checkinitial == True:
+        initialds = open("./datasets/initial_dataset.csv", "r")
+        Lines = initialds.readlines() #read all lines at once and put it in a list
 
         for line in Lines:
             print("Line: {}".format(line.strip()))
@@ -19,13 +22,17 @@ def runalg(request):
 
             if isNaN == True:
                 newLine = line.replace("NaN,", "")
-                print("%s", newLine)
-                print("True1")
-
-            if isNaN == True:
                 newLine = line.replace(",NaN", "")
-                print("%s", newLine)
-                print("True")
-        f.close()
+
+                nands = open("./datasets/NaN_dataset.csv", "a")
+                Lines = nands.writelines(newLine)
+                nands.close()
+
+            else:
+                nands = open("./datasets/NaN_dataset.csv", "a")
+                Lines = nands.writelines(line)
+                nands.close()
+
+        initialds.close()
 
     return render(request, 'datamng/datamng_home.html')

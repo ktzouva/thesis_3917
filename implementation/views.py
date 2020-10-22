@@ -56,14 +56,14 @@ class ImplementationView(TemplateView):
             resString += ','
             resString += sDivision
 
-            isfile = os.path.isfile('./dataset1.csv')
+            isfile = os.path.isfile('./datasets/initial_dataset.csv')
 
             if isfile == False:
-                f = open("dataset1.csv", "w+")
+                f = open("./datasets/initial_dataset.csv", "w+")
                 f.write("%s,%s,%s,%s,%s \r" % (sAddition, sSubtraction, sMultiplication, sDivision, userID))
                 f.close()
             elif isfile == True:
-                f = open("dataset1.csv", "a")
+                f = open("./datasets/initial_dataset.csv", "a")
                 f.write("%s,%s,%s,%s,%s \r" % (sAddition, sSubtraction, sMultiplication, sDivision, userID))
                 f.close()
 
