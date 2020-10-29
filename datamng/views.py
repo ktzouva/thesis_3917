@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import os.path, math
+import os.path, math, csv, re
 
 def datamng_home(request):
     return render(request, 'datamng/datamng_home.html')
@@ -21,8 +21,7 @@ def runalg(request):
             isNaN = 'NaN' in line
 
             if isNaN == True:
-                newLine = line.replace("NaN,", "")
-                newLine = line.replace(",NaN", "")
+                newLine = line.replace(line, "") #delete line with NaNs
 
                 nands = open("./datasets/NaN_dataset.csv", "a")
                 Lines = nands.writelines(newLine)
@@ -33,6 +32,21 @@ def runalg(request):
                 Lines = nands.writelines(line)
                 nands.close()
 
+        #read single values from csv
+        nands = open('./datasets/NaN_dataset.csv', 'r')
+
+        #count lines of file
+        counter = 0
+        content = f.read()
+        dataList = re.split(",|\n", content)
+
+        for i in dataList:
+        	if i:
+        		counter += 1
+
+        print("dataList:", dataList)
+        
+        nands.close()
         initialds.close()
 
     return render(request, 'datamng/datamng_home.html')
