@@ -37,7 +37,7 @@ def runalg(request):
 
         #count lines of file
         counter = 0
-        content = f.read()
+        content = nands.read()
         dataList = re.split(",|\n", content)
 
         for i in dataList:
@@ -45,7 +45,7 @@ def runalg(request):
         		counter += 1
 
         print("dataList:", dataList)
-        
+
         nands.close()
         initialds.close()
 
