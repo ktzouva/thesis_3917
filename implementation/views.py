@@ -35,7 +35,7 @@ class ImplementationView(TemplateView):
 
             userID = request.user.username
             if userID == '':
-                userID = 'null'
+                userID = 'NaN'
 
             addition = num1 + num2
             subtraction = num1 - num2
@@ -55,16 +55,17 @@ class ImplementationView(TemplateView):
             resString += sMultiplication
             resString += ','
             resString += sDivision
+            resString += '\r'
 
             isfile = os.path.isfile('./datasets/initial_dataset.csv')
 
             if isfile == False:
                 f = open("./datasets/initial_dataset.csv", "w+")
-                f.write("%s,%s,%s,%s,%s\r" % (sAddition, sSubtraction, sMultiplication, sDivision, userID))
+                f.write(resString)
                 f.close()
             elif isfile == True:
                 f = open("./datasets/initial_dataset.csv", "a")
-                f.write("%s,%s,%s,%s,%s\r" % (sAddition, sSubtraction, sMultiplication, sDivision, userID))
+                f.write(resString)
                 f.close()
 
             p = Nums(num1 = num1, num2 = num2, addition = addition, subtraction = subtraction, multiplication = multiplication, division = division, userID = userID, numString = numString, resString = resString)
