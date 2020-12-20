@@ -55,6 +55,13 @@ class ImplementationView(TemplateView):
             resString += sMultiplication
             resString += ','
             resString += sDivision
+            resString += ','
+
+            if (addition%2) == 0:
+               resString += 'Even'
+            else:
+               resString += 'Odd'
+
             resString += '\r'
 
             isfile = os.path.isfile('./datasets/initial_dataset.csv')
@@ -63,6 +70,7 @@ class ImplementationView(TemplateView):
                 f = open("./datasets/initial_dataset.csv", "w+")
                 f.write(resString)
                 f.close()
+
             elif isfile == True:
                 f = open("./datasets/initial_dataset.csv", "a")
                 f.write(resString)
