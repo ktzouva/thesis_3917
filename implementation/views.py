@@ -58,9 +58,9 @@ class ImplementationView(TemplateView):
             resString += ','
 
             if (addition%2) == 0:
-               resString += 'Even'
+               resString += '1' #Even
             else:
-               resString += 'Odd'
+               resString += '0' #Odd
 
             resString += '\r'
 
