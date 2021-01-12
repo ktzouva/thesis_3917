@@ -54,7 +54,8 @@ def runalg(request):
 
     print("Gaussian Naive-Bayes accuracy: ", accuracy_score(target_test, prediction, normalize = True)) #print the accuracy score of the model
 
-    # visualizer = ClassificationReport(bayes, classes=['0','1'])
+    # bayes.classes_[0]
+    # visualizer = ClassificationReport(bayes)
     # visualizer.fit(data_train, target_train) # Fit the training data to the visualizer
     # visualizer.score(data_test, target_test) # Evaluate the model on the test data
     # g = visualizer.poof()
