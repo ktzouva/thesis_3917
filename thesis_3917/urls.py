@@ -4,7 +4,6 @@ from . import views as views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('downloads/', include('downloads.urls')),
     path('algorithms/', include('algorithms.urls')),
     path('implementation/', include('implementation.urls')),
     path('saved_values/', include('savedValues.urls')),

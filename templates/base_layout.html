@@ -13,12 +13,17 @@
       <h1><a href="{% url 'home' %}">Implement-ator</a></h1>
       <nav>
         <ul>
-            <li><a href="{% url 'downloads:downloads_home' %}">Downloads</a></li>
             <li><a href="{% url 'algorithms:algorithms_home' %}">Algorithms</a></li>
             <li><a href="{% url 'implementation:implementation_home' %}">Implementation</a></li>
             <li><a href="{% url 'savedValues:savedValues_home' %}">Saved Values</a></li>
             <li><a href="{% url 'datamng:datamng_home' %}">Data Management</a></li>
-            <li><a href="{% url 'accounts:accounts_home' %}">Account</a></li>
+
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'accounts:accounts_home' %}">User: {{request.user.username}}</a></li>
+            {% else %}
+            <li><a href="{% url 'accounts:accounts_home' %}">User: Not Logged In</a></li>
+            {% endif %}
+
             <li><a href="{% url 'about' %}">About</a></li>
         </ul>
       </nav>
@@ -30,7 +35,7 @@
     </div>
 
     <footer>
-      <p>Konstantinos Tzouvaras, AEM: 3917 <br> Thesis Project, 2019-2020</p>
+      <p>Konstantinos Tzouvaras, AEM: 3917 <br> Dissertation Project, 2021-2022</p>
     </footer>
   </body>
 </html>
