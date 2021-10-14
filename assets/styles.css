@@ -175,3 +175,21 @@ div.algorithms p{
     margin-right: 300px;
     margin-left: 300px;
 }
+
+#datamngid {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 7px;
+    margin-right: 300px;
+    margin-left: 300px;
+    font-style: italic;
+}
+
+#datamngid button {
+  background: #777373;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  font-size: 1em;
+}

@@ -2,82 +2,90 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .forms import ImplementationForm
 from .models import Nums
-import os.path
-#from django.contrib.auth.decorators import login_required
+import os.path, random
 
 class ImplementationView(TemplateView):
 
     template_name = 'implementation/implementation_home.html'
 
-    #@login_required(login_url="accounts/login/")
     def get(self, request):
-        form = ImplementationForm()
-        objects = Nums.objects.all()
+        if request.user.is_authenticated:
+            form = ImplementationForm()
+            objects = Nums.objects.all()
 
-        args = {'form': form, 'objects': objects}
-        return render(request, self.template_name, args)
+            args = {'form': form, 'objects': objects}
+            return render(request, self.template_name, args)
+        else:
+            return render(request, 'implementation/implementation_failed.html')
 
-    #@login_required(login_url="accounts/login/")
     def post(self, request):
-        form = ImplementationForm(request.POST)
-        if form.is_valid():
-            # form.save()
-            num1 = form.cleaned_data['num1']
-            num2 = form.cleaned_data['num2']
+        if request.user.is_authenticated:
+            form = ImplementationForm(request.POST)
+            if form.is_valid():
+                # form.save()
+                num1 = form.cleaned_data['num1']
+                num2 = form.cleaned_data['num2']
 
-            sNum1 = str(num1)
-            sNum2 = str(num2)
+                sNum1 = str(num1)
+                sNum2 = str(num2)
 
-            numString = ''
-            numString += sNum1
-            numString += ','
-            numString += sNum2
+                numString = ''
+                numString += sNum1
+                numString += ','
+                numString += sNum2
 
-            userID = request.user.username
-            if userID == '':
-                userID = 'NaN'
+                userID = request.user.username
+                if userID == '':
+                    userID = 'NaN'
 
-            addition = num1 + num2
-            subtraction = num1 - num2
-            multiplication = num1 * num2
-            division = num1 / num2
+                addition = num1 + num2
+                subtraction = num1 - num2
+                multiplication = num1 * num2
+                division = num1 / num2
 
-            sAddition = str(addition)
-            sSubtraction = str(subtraction)
-            sMultiplication = str(multiplication)
-            sDivision = str(division)
+                addition = round(addition, 3)
+                subtraction = round(subtraction, 3)
+                multiplication = round(multiplication, 3)
+                division = round(division, 3)
 
-            resString = ''
-            resString += sAddition
-            resString += ','
-            resString += sSubtraction
-            resString += ','
-            resString += sMultiplication
-            resString += ','
-            resString += sDivision
-            resString += ','
+                sAddition = str(addition)
+                sSubtraction = str(subtraction)
+                sMultiplication = str(multiplication)
+                sDivision = str(division)
 
-            if (addition%2) == 0:
-               resString += '1' #Even
-            else:
-               resString += '0' #Odd
+                resString = ''
+                resString += sAddition
+                resString += ','
+                resString += sSubtraction
+                resString += ','
+                resString += sMultiplication
+                resString += ','
+                resString += sDivision
+                resString += ','
 
-            resString += '\r'
+                if (addition%2) == 0:
+                   resString += 'Even' #Even
+                else:
+                   resString += 'Odd' #Odd
 
-            isfile = os.path.isfile('./datasets/initial_dataset.csv')
+                resString += '\r'
 
-            if isfile == False:
-                f = open("./datasets/initial_dataset.csv", "w+")
-                f.write(resString)
-                f.close()
+                isfile = os.path.isfile('./datasets/initial_dataset.csv')
 
-            elif isfile == True:
-                f = open("./datasets/initial_dataset.csv", "a")
-                f.write(resString)
-                f.close()
+                if isfile == False:
+                    f = open("./datasets/initial_dataset.csv", "w+")
+                    f.write(resString)
+                    f.close()
 
-            p = Nums(num1 = num1, num2 = num2, addition = addition, subtraction = subtraction, multiplication = multiplication, division = division, userID = userID, numString = numString, resString = resString)
-            p.save()
+                elif isfile == True:
+                    f = open("./datasets/initial_dataset.csv", "a")
+                    f.write(resString)
+                    f.close()
 
-        args = {'form': form, 'num1': num1, 'num2': num2, 'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication, 'division': division, 'userID': userID, 'numString': numString, 'resString': resString}
-        return render(request, self.template_name, args)
+                p = Nums(num1 = num1, num2 = num2, addition = addition, subtraction = subtraction, multiplication = multiplication, division = division, userID = userID, numString = numString, resString = resString)
+                p.save()
+
+            args = {'form': form, 'num1': num1, 'num2': num2, 'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication, 'division': division, 'userID': userID, 'numString': numString, 'resString': resString}
+            return render(request, self.template_name, args)
+        else:
+            return render(request, 'implementation/implementation_failed.html')
