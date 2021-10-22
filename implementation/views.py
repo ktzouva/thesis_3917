@@ -2,18 +2,17 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .forms import ImplementationForm
 from .models import Nums
-import os.path, random
+import os.path
 
 class ImplementationView(TemplateView):
-
     template_name = 'implementation/implementation_home.html'
 
     def get(self, request):
         if request.user.is_authenticated:
             form = ImplementationForm()
             objects = Nums.objects.all()
-
             args = {'form': form, 'objects': objects}
+
             return render(request, self.template_name, args)
         else:
             return render(request, 'implementation/implementation_failed.html')
@@ -21,22 +20,12 @@ class ImplementationView(TemplateView):
     def post(self, request):
         if request.user.is_authenticated:
             form = ImplementationForm(request.POST)
+
             if form.is_valid():
-                # form.save()
                 num1 = form.cleaned_data['num1']
                 num2 = form.cleaned_data['num2']
 
-                sNum1 = str(num1)
-                sNum2 = str(num2)
-
-                numString = ''
-                numString += sNum1
-                numString += ','
-                numString += sNum2
-
                 userID = request.user.username
-                if userID == '':
-                    userID = 'NaN'
 
                 addition = num1 + num2
                 subtraction = num1 - num2
@@ -64,28 +53,27 @@ class ImplementationView(TemplateView):
                 resString += ','
 
                 if (addition%2) == 0:
-                   resString += 'Even' #Even
+                   resString += 'Even'
                 else:
-                   resString += 'Odd' #Odd
+                   resString += 'Odd'
 
                 resString += '\r'
 
-                isfile = os.path.isfile('./datasets/initial_dataset.csv')
+                isfile = os.path.isfile('./dataset.csv')
 
                 if isfile == False:
-                    f = open("./datasets/initial_dataset.csv", "w+")
+                    f = open("./dataset.csv", "w+")
                     f.write(resString)
                     f.close()
-
                 elif isfile == True:
-                    f = open("./datasets/initial_dataset.csv", "a")
+                    f = open("./dataset.csv", "a")
                     f.write(resString)
                     f.close()
 
-                p = Nums(num1 = num1, num2 = num2, addition = addition, subtraction = subtraction, multiplication = multiplication, division = division, userID = userID, numString = numString, resString = resString)
+                p = Nums(num1 = num1, num2 = num2, addition = addition, subtraction = subtraction, multiplication = multiplication, division = division, userID = userID)
                 p.save()
 
-            args = {'form': form, 'num1': num1, 'num2': num2, 'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication, 'division': division, 'userID': userID, 'numString': numString, 'resString': resString}
+            args = {'form': form, 'num1': num1, 'num2': num2, 'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication, 'division': division, 'userID': userID, 'resString': resString}
             return render(request, self.template_name, args)
         else:
             return render(request, 'implementation/implementation_failed.html')

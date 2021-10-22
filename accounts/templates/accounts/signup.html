@@ -6,9 +6,10 @@
   <form id="signupid" class="site-form" method="post">
 
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" name="signup" value="Sign Up">
 
+    {{ form }}
+
+    <input type="submit" name="signup" value="Sign Up">
   </form>
 
 {% endblock %}

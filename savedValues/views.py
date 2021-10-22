@@ -6,6 +6,7 @@ def savedValues_home(request):
     if request.user.is_authenticated:
         objects = Nums.objects.all()
         args = {'objects': objects}
+        
         return render(request, 'savedValues/savedValues_home.html', args)
     else:
         return render(request, 'savedValues/savedValues_failed.html')

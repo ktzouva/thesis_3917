@@ -9,4 +9,4 @@ class Algorithm(models.Model):
         return self.title
 
     def snippet(self):
-        return self.info[:50] + '...'#From 0 to 50 chars.
+        return self.info[:100] + '...'#From 0 to 50 chars.
