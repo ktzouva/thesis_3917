@@ -62,7 +62,7 @@ class ImplementationView(TemplateView):
                 isfile = os.path.isfile('./dataset.csv')
 
                 if isfile == False:
-                    f = open("./dataset.csv", "w+")
+                    f = open("./dataset.csv", "w")
                     f.write(resString)
                     f.close()
                 elif isfile == True:
