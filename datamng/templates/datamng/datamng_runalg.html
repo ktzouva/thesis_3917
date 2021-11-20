@@ -1,0 +1,29 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+  <h1>Data Management</h1>
+
+  <div id="datamngid" class="container">
+    <h2>Data: <br><br> {{ content }}</h2>
+    <br><br><br>
+
+    <h2>Training Set Data: <br><br> {{ data_train }}</h2>
+    <br><br><br>
+
+    <h2>Training Set Classes: <br><br> {{ target_train }}</h2>
+    <br><br><br>
+
+    <h2>Test Set Data: <br><br> {{ data_test }}</h2>
+    <br><br><br>
+
+    <h2>Test Set Classes (Expected Prediction): <br><br> {{ target_test }}</h2>
+    <br><br><br>
+
+    <h2>Gaussian NB Prediction: <br><br> {{ prediction }}</h2>
+    <br><br><br>
+
+    <h2>Gaussian NB Accuracy: <br><br> {{ accuracy }}</h2>
+    <br><br><br>
+  </div>
+
+{% endblock %}

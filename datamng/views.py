@@ -77,6 +77,6 @@ def runalg(request):
 
         args = {'content': list_content, 'data_train': list_datatrain, 'target_train': target_train, 'data_test': list_datatest, 'target_test': target_test, 'prediction': prediction, 'accuracy': accuracy}
 
-        return render(request, 'datamng/datamng_home.html', args)
+        return render(request, 'datamng/datamng_runalg.html', args)
     else:
         return render(request, 'datamng/datamng_failed.html')
