@@ -24,7 +24,7 @@ def runalg(request):
         parityCol = [col for col in dataset.columns if col not in ['addition','subtraction','multiplication','division']]
         y = dataset[parityCol]
 
-        dataCols = [col for col in dataset.columns if col not in ['headers', 'parity']]
+        dataCols = [col for col in dataset.columns if col not in ['headers','multiplication','division', 'parity']]
         X = dataset[dataCols]
 
         data_train, data_test, target_train, target_test = train_test_split(X, y, random_state = 10)
