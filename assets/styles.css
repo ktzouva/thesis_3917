@@ -1,8 +1,7 @@
 body{
-    background-color: #0f121f;
-    background-image: url(stars.png);
+    background-color: #B3E8E5;
     background-repeat-y: no-repeat;
-    color: #fff;
+    color: #2F8F9D;
 }
 
 body *{
@@ -15,7 +14,7 @@ h1, h2, h3, h4, h5{
 }
 
 a, a:hover, a:visited{
-    color: #fff;
+    color: #2F8F9D;
     text-decoration: none;
 }
 
@@ -48,7 +47,7 @@ nav li{
 
 nav button{
     background: none;
-    color: #fff;
+    color: #2F8F9D;
     cursor: pointer;
     border: 0;
     font-size: 1em;
@@ -59,8 +58,8 @@ footer{
     left: 0;
     bottom: 0;
     width: 100%;
-    background: #0F131F;
-    color: white;
+    background: #B3E8E5;
+    color: #2F8F9D;
     text-align: center;
 }
 
@@ -187,7 +186,7 @@ div.algorithms p{
 }
 
 #datamngid button {
-  background: #777373;
+  background: #2F8F9D;
   color: #fff;
   cursor: pointer;
   border: 0;
