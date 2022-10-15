@@ -24,7 +24,7 @@ def runalg(request):
         parityCol = [col for col in dataset.columns if col not in ['addition','subtraction','multiplication','division']]
         y = dataset[parityCol]
 
-        dataCols = [col for col in dataset.columns if col not in ['headers','multiplication','division', 'parity']]
+        dataCols = [col for col in dataset.columns if col not in ['headers', 'subtraction', 'multiplication','division', 'parity']]
         X = dataset[dataCols]
 
         data_train, data_test, target_train, target_test = train_test_split(X, y, random_state = 10)
@@ -35,7 +35,7 @@ def runalg(request):
 
         accuracy = accuracy_score(target_test, prediction, normalize = True)
 
-        classification_report(bayes, data_train, target_train, data_test, target_test, classes = dataCols)
+        classification_report(bayes, data_train, target_train, data_test, target_test, classes = ['Even', 'Odd'])
 
         list_content = content.split()
         list_datatrain = data_train.values.tolist()
